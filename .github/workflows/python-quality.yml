@@ -1,0 +1,46 @@
+name: Python quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-quality-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Python quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python
+        run: uv python install 3.13
+
+      - name: Sync dependencies
+        run: uv sync --all-groups
+
+      - name: Ruff lint
+        run: uv run ruff check src
+
+      - name: Ruff format
+        run: uv run ruff format --check src
+
+      - name: Mypy
+        run: uv run mypy src
+
+      - name: Import smoke check
+        run: uv run python -c "import chora_ml_jobs.entrypoint, chora_ml_jobs.alerting, chora_ml_jobs.config, chora_ml_jobs.drift_detector, chora_ml_jobs.eval_runner, chora_ml_jobs.billing_aggregator; print('imports ok')"

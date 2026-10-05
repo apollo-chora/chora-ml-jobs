@@ -1,0 +1,241 @@
+{
+  "description": "Golden dataset for CMS agents — 10 test cases covering content review and quality scoring.",
+  "agent": "cms_agents",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "cms-001",
+      "input": {
+        "content_title": "Introduction to Quantum Computing",
+        "content_body": "Quantum computing uses qubits instead of classical bits. Qubits can exist in superposition, allowing them to represent 0 and 1 simultaneously. This enables quantum computers to solve certain problems exponentially faster than classical computers.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Content is factually accurate, well-structured, and uses appropriate terminology. Suitable for intermediate learners."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["quality", "accurate"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "cms-002",
+      "input": {
+        "content_title": "Basic Addition",
+        "content_body": "2+2=5. This is a simple math fact that everyone should know.",
+        "content_type": "knowledge_check",
+        "expected_response_hint": "Quality: low. Contains factual error (2+2=4, not 5). Must be corrected before publishing."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["error", "incorrect"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 0,
+        "expected_quality_score_max": 40
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.50,
+        "vocabulary_compliance": 0.10,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "cms-003",
+      "input": {
+        "content_title": "The Water Cycle",
+        "content_body": "Water evaporates from oceans, forms clouds through condensation, and returns as precipitation. This continuous process is essential for life on Earth and has been occurring for billions of years.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Clear, accurate explanation suitable for beginners. Good pedagogical structure."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["quality", "clear"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "cms-004",
+      "input": {
+        "content_title": "Advanced Neural Networks",
+        "content_body": "lol so basically neural networks r like brains but made of math. they learn stuff by adjusting weights n biases. pretty cool tbh",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: low. Informal tone inappropriate for educational content. Lacks technical rigor and proper grammar. Needs complete rewrite."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["informal", "rewrite"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 0,
+        "expected_quality_score_max": 35
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.40,
+        "factual_accuracy": 0.25,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "cms-005",
+      "input": {
+        "content_title": "Shakespearean Sonnets",
+        "content_body": "A Shakespearean sonnet consists of 14 lines written in iambic pentameter. It follows the rhyme scheme ABAB CDCD EFEF GG, with three quatrains and a concluding couplet that often provides a twist or resolution.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Technically accurate literary analysis with clear structure. Appropriate for intermediate learners."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["quality", "accurate"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "cms-006",
+      "input": {
+        "content_title": "Climate Change Overview",
+        "content_body": "Climate change is entirely a hoax created by scientists to get funding. There is no real evidence that human activity affects the climate.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: rejected. Contains scientific misinformation contradicting overwhelming scientific consensus. Must not be published."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["misinformation", "reject"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 0,
+        "expected_quality_score_max": 20
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.45,
+        "vocabulary_compliance": 0.10,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "cms-007",
+      "input": {
+        "content_title": "Introduction to SQL",
+        "content_body": "SQL (Structured Query Language) is used to manage relational databases. The basic commands are SELECT (retrieve data), INSERT (add data), UPDATE (modify data), and DELETE (remove data). A simple query looks like: SELECT * FROM users WHERE age > 18;",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Clear, practical introduction with concrete examples. Good for beginners learning database concepts."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["quality", "clear"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "cms-008",
+      "input": {
+        "content_title": "Cooking Chemistry",
+        "content_body": "When you bake bread, yeast produces carbon dioxide through fermentation, causing the dough to rise. The Maillard reaction between amino acids and reducing sugars creates the golden brown crust and complex flavors.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Excellent interdisciplinary content connecting everyday activities to chemistry. Engaging and accurate."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["quality"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "cms-009",
+      "input": {
+        "content_title": "World Geography",
+        "content_body": "",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: rejected. Empty content body. Cannot review content with no substance."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["empty", "reject"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 0,
+        "expected_quality_score_max": 10
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "cms-010",
+      "input": {
+        "content_title": "The Human Immune System",
+        "content_body": "The immune system protects the body from pathogens through innate immunity (immediate, non-specific response) and adaptive immunity (specific, memory-based response). White blood cells, including T-cells and B-cells, play crucial roles in identifying and neutralizing threats.",
+        "content_type": "explanation",
+        "expected_response_hint": "Quality: high. Accurate scientific content with appropriate complexity for intermediate learners. Well-organized with clear terminology."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["quality", "accurate"],
+        "forbidden_keywords": [],
+        "expected_quality_score_min": 80
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    }
+  ]
+}

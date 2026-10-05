@@ -1,0 +1,352 @@
+{
+  "description": "Golden dataset for atomic content analysis agents — 15 test cases covering taxonomy classification and difficulty assessment.",
+  "agent": "atomic_content",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "ac-001",
+      "input": {
+        "atom_content": "What is the chemical formula for water?",
+        "atom_type": "knowledge_check",
+        "expected_response_hint": "Classification: Chemistry, Difficulty: beginner, Taxonomy: remember. This is a basic recall question about chemical formulas."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["chemistry", "beginner"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "remember",
+        "expected_subject": "chemistry"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ac-002",
+      "input": {
+        "atom_content": "Compare and contrast the economic systems of capitalism and socialism, providing examples of countries that follow each.",
+        "atom_type": "open_response",
+        "expected_response_hint": "Classification: Economics, Difficulty: advanced, Taxonomy: analyze. Requires comparison of complex systems with real-world examples."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "advanced",
+        "required_keywords": ["economics", "advanced", "analyze"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "analyze",
+        "expected_subject": "economics"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-003",
+      "input": {
+        "atom_content": "List the planets in our solar system in order from the sun.",
+        "atom_type": "knowledge_check",
+        "expected_response_hint": "Classification: Astronomy, Difficulty: beginner, Taxonomy: remember. Straightforward recall of planetary order."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["astronomy", "beginner", "remember"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "remember",
+        "expected_subject": "astronomy"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ac-004",
+      "input": {
+        "atom_content": "Design an experiment to test whether plants grow faster under red or blue light. Include hypothesis, variables, and procedure.",
+        "atom_type": "project",
+        "expected_response_hint": "Classification: Biology, Difficulty: advanced, Taxonomy: create. Requires experimental design with scientific methodology."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "advanced",
+        "required_keywords": ["biology", "advanced", "create"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "create",
+        "expected_subject": "biology"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-005",
+      "input": {
+        "atom_content": "Explain why the Fibonacci sequence appears in nature.",
+        "atom_type": "explanation",
+        "expected_response_hint": "Classification: Mathematics, Difficulty: intermediate, Taxonomy: understand. Requires conceptual understanding of mathematical patterns in nature."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["mathematics", "intermediate", "understand"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "understand",
+        "expected_subject": "mathematics"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-006",
+      "input": {
+        "atom_content": "Write a Python function that sorts a list using the merge sort algorithm.",
+        "atom_type": "coding_exercise",
+        "expected_response_hint": "Classification: Computer Science, Difficulty: intermediate, Taxonomy: apply. Requires implementing a known algorithm."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["computer science", "intermediate", "apply"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "apply",
+        "expected_subject": "computer_science"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-007",
+      "input": {
+        "atom_content": "What year did the French Revolution begin?",
+        "atom_type": "knowledge_check",
+        "expected_response_hint": "Classification: History, Difficulty: beginner, Taxonomy: remember. Simple date recall."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["history", "beginner"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "remember",
+        "expected_subject": "history"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.45,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ac-008",
+      "input": {
+        "atom_content": "Evaluate the ethical implications of using AI in healthcare diagnosis, considering both benefits and risks.",
+        "atom_type": "essay",
+        "expected_response_hint": "Classification: Ethics/Technology, Difficulty: advanced, Taxonomy: evaluate. Requires critical judgment and balanced analysis."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "advanced",
+        "required_keywords": ["advanced", "evaluate"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "evaluate",
+        "expected_subject": "ethics"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-009",
+      "input": {
+        "atom_content": "Identify the literary devices used in the following passage: 'The wind whispered through the trees, carrying secrets of the ancient forest.'",
+        "atom_type": "analysis",
+        "expected_response_hint": "Classification: Literature, Difficulty: intermediate, Taxonomy: analyze. Requires identification and analysis of personification and imagery."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["literature", "intermediate", "analyze"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "analyze",
+        "expected_subject": "literature"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ac-010",
+      "input": {
+        "atom_content": "Apply Newton's second law to calculate the force needed to accelerate a 5kg object at 3 m/s².",
+        "atom_type": "problem_solving",
+        "expected_response_hint": "Classification: Physics, Difficulty: intermediate, Taxonomy: apply. Requires applying F=ma formula with given values."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["physics", "intermediate", "apply"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "apply",
+        "expected_subject": "physics"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ac-011",
+      "input": {
+        "atom_content": "Translate 'Hello, how are you?' into Spanish.",
+        "atom_type": "knowledge_check",
+        "expected_response_hint": "Classification: Languages/Spanish, Difficulty: beginner, Taxonomy: remember. Basic translation recall."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["language", "beginner"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "remember",
+        "expected_subject": "languages"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.45,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-012",
+      "input": {
+        "atom_content": "Describe the process of cellular respiration and explain why it is important for living organisms.",
+        "atom_type": "explanation",
+        "expected_response_hint": "Classification: Biology, Difficulty: intermediate, Taxonomy: understand. Requires process explanation and significance."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["biology", "intermediate", "understand"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "understand",
+        "expected_subject": "biology"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-013",
+      "input": {
+        "atom_content": "Given a dataset of student grades, calculate the mean, median, and standard deviation.",
+        "atom_type": "problem_solving",
+        "expected_response_hint": "Classification: Statistics, Difficulty: intermediate, Taxonomy: apply. Requires applying statistical formulas to data."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["statistics", "intermediate", "apply"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "apply",
+        "expected_subject": "statistics"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ac-014",
+      "input": {
+        "atom_content": "Propose a solution to reduce plastic waste in oceans, including implementation steps and expected outcomes.",
+        "atom_type": "project",
+        "expected_response_hint": "Classification: Environmental Science, Difficulty: advanced, Taxonomy: create. Requires creative problem-solving with structured proposal."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "advanced",
+        "required_keywords": ["environmental", "advanced", "create"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "create",
+        "expected_subject": "environmental_science"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ac-015",
+      "input": {
+        "atom_content": "Categorize the following musical instruments by family: violin, trumpet, timpani, flute, cello.",
+        "atom_type": "knowledge_check",
+        "expected_response_hint": "Classification: Music, Difficulty: beginner, Taxonomy: understand. Requires understanding instrument categorization."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["music", "beginner"],
+        "forbidden_keywords": [],
+        "expected_taxonomy": "understand",
+        "expected_subject": "music"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    }
+  ]
+}

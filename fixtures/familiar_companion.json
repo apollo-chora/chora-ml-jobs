@@ -1,0 +1,487 @@
+{
+  "description": "Golden dataset for Familiar companion agent — 20 test cases covering learner interactions with RPG learning companion.",
+  "agent": "familiar_companion",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "fc-001",
+      "input": {
+        "learner_question": "Can you explain how photosynthesis works?",
+        "evolution_tier": 2,
+        "learning_style": "visual",
+        "expected_response_hint": "Photosynthesis is the process where plants convert sunlight, water, and carbon dioxide into glucose and oxygen. Think of it like a LearningAtom — each step builds on the last."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["photosynthesis", "sunlight", "plants"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-002",
+      "input": {
+        "learner_question": "I keep getting this wrong. What am I missing about derivatives?",
+        "evolution_tier": 3,
+        "learning_style": "kinesthetic",
+        "expected_response_hint": "Great question! Derivatives measure how a function changes. Try thinking about it as the slope of the tangent line at any point. Would you like a hint to work through an example?"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["derivative", "change", "function"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-003",
+      "input": {
+        "learner_question": "What is the difference between mitosis and meiosis?",
+        "evolution_tier": 2,
+        "learning_style": "reading",
+        "expected_response_hint": "Mitosis produces two identical daughter cells for growth, while meiosis produces four unique gametes for reproduction. Both involve cell division but serve different purposes."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["mitosis", "meiosis", "cell"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "fc-004",
+      "input": {
+        "learner_question": "Why is the sky blue?",
+        "evolution_tier": 1,
+        "learning_style": "visual",
+        "expected_response_hint": "The sky appears blue because of Rayleigh scattering. Sunlight contains all colors, and the atmosphere scatters shorter blue wavelengths more than others."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["scatter", "blue", "light"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-005",
+      "input": {
+        "learner_question": "Can you quiz me on the periodic table?",
+        "evolution_tier": 3,
+        "learning_style": "kinesthetic",
+        "expected_response_hint": "Let's try this! What element has the atomic number 79? Here's a hint: it's a precious metal often associated with winning."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["element"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.40,
+        "factual_accuracy": 0.25,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-006",
+      "input": {
+        "learner_question": "I'm feeling frustrated, nothing makes sense anymore.",
+        "evolution_tier": 2,
+        "learning_style": "auditory",
+        "expected_response_hint": "I understand that feeling — learning can be tough sometimes. Let's take a step back and try a different approach. What topic would you like to revisit?"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": [],
+        "forbidden_keywords": ["stupid", "dumb", "give up"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.10,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.50
+      },
+      "min_acceptable_score": 80
+    },
+    {
+      "id": "fc-007",
+      "input": {
+        "learner_question": "Explain quantum entanglement in simple terms.",
+        "evolution_tier": 4,
+        "learning_style": "reading",
+        "expected_response_hint": "Quantum entanglement is when two particles become linked so that measuring one instantly affects the other, regardless of distance. Einstein called it 'spooky action at a distance.'"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "advanced",
+        "required_keywords": ["quantum", "entanglement", "particles"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "fc-008",
+      "input": {
+        "learner_question": "What's 2 + 2?",
+        "evolution_tier": 1,
+        "learning_style": "kinesthetic",
+        "expected_response_hint": "The answer is 4! Great question — keep practicing your arithmetic."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["4"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "fc-009",
+      "input": {
+        "learner_question": "Can you help me understand recursion in programming?",
+        "evolution_tier": 3,
+        "learning_style": "visual",
+        "expected_response_hint": "Recursion is when a function calls itself to solve a smaller version of the same problem. Think of it like Russian nesting dolls — each doll contains a smaller one until you reach the base case."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["recursion", "function", "calls"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-010",
+      "input": {
+        "learner_question": "Tell me about World War II.",
+        "evolution_tier": 2,
+        "learning_style": "reading",
+        "expected_response_hint": "World War II was a global conflict from 1939 to 1945 involving most of the world's nations. It began with Germany's invasion of Poland and ended with the Allied victory."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["war", "1939", "1945"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-011",
+      "input": {
+        "learner_question": "How does gravity work?",
+        "evolution_tier": 1,
+        "learning_style": "visual",
+        "expected_response_hint": "Gravity is the force that pulls objects toward each other. The more massive an object, the stronger its gravitational pull. That's why we stay on the ground — Earth is very massive!"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["gravity", "force", "mass"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-012",
+      "input": {
+        "learner_question": "I want to learn about Shakespeare but it seems boring.",
+        "evolution_tier": 2,
+        "learning_style": "auditory",
+        "expected_response_hint": "Shakespeare can actually be quite exciting! Try thinking of his plays as the original drama series — full of love, betrayal, and even sword fights. Which theme interests you most?"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["Shakespeare"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.40,
+        "factual_accuracy": 0.20,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-013",
+      "input": {
+        "learner_question": "What are the three laws of thermodynamics?",
+        "evolution_tier": 3,
+        "learning_style": "reading",
+        "expected_response_hint": "The three laws are: 1) Energy cannot be created or destroyed (conservation), 2) Entropy in an isolated system always increases, 3) Entropy approaches a constant as temperature approaches absolute zero."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "advanced",
+        "required_keywords": ["energy", "entropy", "thermodynamics"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "fc-014",
+      "input": {
+        "learner_question": "Can you give me a hint for this problem without telling me the answer?",
+        "evolution_tier": 4,
+        "learning_style": "kinesthetic",
+        "expected_response_hint": "Of course! Try breaking the problem down into smaller steps. What do you already know? Start there and work forward — I'll guide you if you get stuck."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["hint", "try"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.45,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-015",
+      "input": {
+        "learner_question": "What is DNA?",
+        "evolution_tier": 1,
+        "learning_style": "visual",
+        "expected_response_hint": "DNA stands for deoxyribonucleic acid. It's the molecule that carries the genetic instructions for life. Think of it as a blueprint that tells cells how to build and maintain your body."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["DNA", "genetic"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-016",
+      "input": {
+        "learner_question": "How do computers store data?",
+        "evolution_tier": 2,
+        "learning_style": "reading",
+        "expected_response_hint": "Computers store data using binary — sequences of 0s and 1s. These bits are physically represented as electrical charges in memory chips or magnetic patterns on hard drives."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["binary", "data", "memory"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-017",
+      "input": {
+        "learner_question": "I aced my last three DailyDose sessions!",
+        "evolution_tier": 3,
+        "learning_style": "auditory",
+        "expected_response_hint": "That's amazing! Your ComboMultiplier must be climbing. Keep up that momentum — consistency is the key to mastering new LearningAtom concepts."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": [],
+        "forbidden_keywords": ["course", "lesson", "badge"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.10,
+        "vocabulary_compliance": 0.40,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "fc-018",
+      "input": {
+        "learner_question": "Can you explain the Pythagorean theorem?",
+        "evolution_tier": 2,
+        "learning_style": "visual",
+        "expected_response_hint": "The Pythagorean theorem states that in a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides: a squared plus b squared equals c squared."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["Pythagorean", "triangle", "square"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": false
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "fc-019",
+      "input": {
+        "learner_question": "What are the different states of matter?",
+        "evolution_tier": 1,
+        "learning_style": "kinesthetic",
+        "expected_response_hint": "There are four main states of matter: solid, liquid, gas, and plasma. Each state has different properties based on how the molecules move and interact."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["solid", "liquid", "gas"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "fc-020",
+      "input": {
+        "learner_question": "I just evolved my Familiar to tier 4!",
+        "evolution_tier": 4,
+        "learning_style": "visual",
+        "expected_response_hint": "Congratulations on reaching evolution tier 4! Your dedication to learning is truly impressive. Let's keep exploring new frontiers of knowledge together."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": [],
+        "forbidden_keywords": ["bot", "chatbot", "badge", "level"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.10,
+        "vocabulary_compliance": 0.45,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 75
+    }
+  ]
+}

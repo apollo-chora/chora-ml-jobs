@@ -1,0 +1,253 @@
+{
+  "description": "Golden dataset for infrastructure agents — 10 test cases covering routing decisions and model selection.",
+  "agent": "infrastructure_agents",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "infra-001",
+      "input": {
+        "task_type": "chat_response",
+        "complexity": "low",
+        "latency_requirement_ms": 500,
+        "tenant_budget_tier": "standard",
+        "expected_response_hint": "Select: lightweight model (e.g., GPT-4o-mini or Claude Haiku). Low complexity chat does not need expensive models. Latency priority."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["lightweight", "latency"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "lightweight"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "infra-002",
+      "input": {
+        "task_type": "content_generation",
+        "complexity": "high",
+        "latency_requirement_ms": 5000,
+        "tenant_budget_tier": "premium",
+        "expected_response_hint": "Select: premium model (e.g., GPT-4o or Claude Sonnet). High complexity content generation with relaxed latency. Premium tenant budget allows it."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["premium", "quality"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "premium"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "infra-003",
+      "input": {
+        "task_type": "governance_check",
+        "complexity": "any",
+        "latency_requirement_ms": 1000,
+        "tenant_budget_tier": "any",
+        "expected_response_hint": "Select: platform-controlled governance model. Governance Gatekeeper ALWAYS uses the platform-controlled model regardless of tenant BYOA settings."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["platform-controlled", "governance"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "governance"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.10,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.45
+      },
+      "min_acceptable_score": 82
+    },
+    {
+      "id": "infra-004",
+      "input": {
+        "task_type": "embedding_generation",
+        "complexity": "medium",
+        "latency_requirement_ms": 2000,
+        "tenant_budget_tier": "standard",
+        "expected_response_hint": "Select: embedding model (e.g., text-embedding-3-small). Embedding tasks require specialized models, not general chat models."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["embedding"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "embedding"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "infra-005",
+      "input": {
+        "task_type": "chat_response",
+        "complexity": "high",
+        "latency_requirement_ms": 300,
+        "tenant_budget_tier": "standard",
+        "expected_response_hint": "Select: mid-tier model with latency optimization. High complexity but tight latency budget — must balance quality with speed."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["balance", "latency"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "mid-tier"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "infra-006",
+      "input": {
+        "task_type": "chat_response",
+        "complexity": "medium",
+        "latency_requirement_ms": 2000,
+        "tenant_budget_tier": "byoa",
+        "byoa_model_id": "tenant-custom-llama-3",
+        "expected_response_hint": "Select: tenant BYOA model (tenant-custom-llama-3). BYOA tenants use their own model for non-governance tasks. Route to tenant's model endpoint."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["BYOA", "tenant"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "byoa"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.10,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.25,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "infra-007",
+      "input": {
+        "task_type": "persona_synthesis",
+        "complexity": "high",
+        "latency_requirement_ms": 10000,
+        "tenant_budget_tier": "premium",
+        "expected_response_hint": "Select: premium model with long context. Persona synthesis requires high capability for RAG-persistent persona generation."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["premium", "persona"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "premium"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.25,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "infra-008",
+      "input": {
+        "task_type": "content_moderation",
+        "complexity": "low",
+        "latency_requirement_ms": 500,
+        "tenant_budget_tier": "standard",
+        "expected_response_hint": "Select: moderation-optimized model. Content moderation uses specialized classification rather than general-purpose LLMs."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["moderation"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "moderation"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.10,
+        "factual_accuracy": 0.35,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.40
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "infra-009",
+      "input": {
+        "task_type": "ab_test_routing",
+        "complexity": "medium",
+        "latency_requirement_ms": 2000,
+        "tenant_budget_tier": "premium",
+        "ab_test_active": true,
+        "control_model": "claude-3-sonnet",
+        "treatment_model": "gpt-4o",
+        "traffic_split_pct": 50,
+        "expected_response_hint": "Select: route based on A/B test configuration. 50% traffic to control (claude-3-sonnet), 50% to treatment (gpt-4o). Log assignment for analysis."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "intermediate",
+        "required_keywords": ["A/B", "test"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "ab_test"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.10,
+        "factual_accuracy": 0.40,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "infra-010",
+      "input": {
+        "task_type": "chat_response",
+        "complexity": "low",
+        "latency_requirement_ms": 200,
+        "tenant_budget_tier": "standard",
+        "all_models_unhealthy": true,
+        "expected_response_hint": "Select: fallback/circuit-breaker response. All models unhealthy — return graceful degradation message rather than failing silently."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["fallback"],
+        "forbidden_keywords": [],
+        "expected_model_tier": "fallback"
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.10,
+        "factual_accuracy": 0.30,
+        "vocabulary_compliance": 0.15,
+        "safety_score": 0.45
+      },
+      "min_acceptable_score": 75
+    }
+  ]
+}

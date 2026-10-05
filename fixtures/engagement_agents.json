@@ -1,0 +1,369 @@
+{
+  "description": "Golden dataset for engagement agents — 15 test cases covering trigger conditions and recommendation quality.",
+  "agent": "engagement_agents",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "ea-001",
+      "input": {
+        "trigger": "streak_at_risk",
+        "learner_streak_days": 6,
+        "last_activity_hours_ago": 20,
+        "expected_response_hint": "You're on a 6-day streak! Don't lose your momentum — try a quick DailyDose to keep it going."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["streak"],
+        "forbidden_keywords": ["punishment", "penalty"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.30,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ea-002",
+      "input": {
+        "trigger": "combo_multiplier_peak",
+        "current_multiplier": 3,
+        "atoms_completed_today": 5,
+        "expected_response_hint": "Your ComboMultiplier is at 3x! Keep going — one more correct answer and you'll reach the maximum 4x multiplier."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["multiplier"],
+        "forbidden_keywords": ["streak bonus", "badge"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.20,
+        "vocabulary_compliance": 0.35,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ea-003",
+      "input": {
+        "trigger": "forgetting_curve_due",
+        "atom_title": "Pythagorean Theorem",
+        "days_since_last_review": 14,
+        "retention_estimate": 0.45,
+        "expected_response_hint": "It's been 14 days since you reviewed the Pythagorean Theorem. Your retention may have dropped — a quick review now will strengthen your long-term memory."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["review", "memory"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.25,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ea-004",
+      "input": {
+        "trigger": "discovery_mode_suggestion",
+        "current_topic": "Cell Biology",
+        "related_atoms": ["Genetics", "Biochemistry", "Ecology"],
+        "expected_response_hint": "Since you're exploring Cell Biology, you might enjoy branching into Genetics next — they share many foundational concepts."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["explore"],
+        "forbidden_keywords": ["course", "lesson"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.20,
+        "vocabulary_compliance": 0.30,
+        "safety_score": 0.20
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ea-005",
+      "input": {
+        "trigger": "inactivity_reengagement",
+        "days_inactive": 7,
+        "last_topic": "Linear Algebra",
+        "expected_response_hint": "Welcome back! It's been a week since your last session on Linear Algebra. Let's ease back in with a quick refresher."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["back"],
+        "forbidden_keywords": ["you missed", "falling behind"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.10,
+        "vocabulary_compliance": 0.25,
+        "safety_score": 0.40
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ea-006",
+      "input": {
+        "trigger": "xp_milestone",
+        "total_xp": 5000,
+        "milestone_label": "Scholar",
+        "expected_response_hint": "You've reached 5,000 XP and earned the Scholar milestone! Your dedication is paying off. Keep exploring new LearningAtom topics."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["5000", "milestone"],
+        "forbidden_keywords": ["badge", "achievement"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.40,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ea-007",
+      "input": {
+        "trigger": "difficulty_adjustment",
+        "recent_accuracy": 0.95,
+        "current_difficulty": "intermediate",
+        "suggested_difficulty": "advanced",
+        "expected_response_hint": "You're scoring 95% accuracy — impressive! I'm increasing the difficulty to advanced. This should keep you challenged and learning."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["accuracy", "difficulty"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.20,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ea-008",
+      "input": {
+        "trigger": "social_learning_prompt",
+        "peer_activity": "3 peers completed Organic Chemistry this week",
+        "expected_response_hint": "Three of your peers tackled Organic Chemistry this week. Want to try it too? Learning together can make challenging topics more fun."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["peers"],
+        "forbidden_keywords": ["compete", "beat", "winner"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.25,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.25,
+        "safety_score": 0.35
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ea-009",
+      "input": {
+        "trigger": "daily_dose_completion",
+        "atoms_completed": 3,
+        "daily_goal": 3,
+        "expected_response_hint": "DailyDose complete! You finished all 3 of today's LearningAtom reviews. Great consistency — see you tomorrow!"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["complete"],
+        "forbidden_keywords": ["course", "lesson", "quiz"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.35,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 72
+    },
+    {
+      "id": "ea-010",
+      "input": {
+        "trigger": "weak_topic_nudge",
+        "weak_topic": "Algebra",
+        "accuracy_on_topic": 0.42,
+        "expected_response_hint": "Your Algebra accuracy is at 42%. Let's revisit some foundational concepts — a quick review can help strengthen your understanding."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": true,
+        "difficulty_level": "beginner",
+        "required_keywords": ["review"],
+        "forbidden_keywords": ["failing", "bad", "wrong"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.35,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ea-011",
+      "input": {
+        "trigger": "curiosity_reward",
+        "atoms_explored_graph": 12,
+        "unique_topics_touched": 5,
+        "expected_response_hint": "Your curiosity is flourishing! You've explored 12 LearningAtom nodes across 5 different topics in discovery mode. Keep following your interests."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["curiosity", "explore"],
+        "forbidden_keywords": ["course", "module"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.35,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ea-012",
+      "input": {
+        "trigger": "digital_skin_earned",
+        "skin_name": "Nebula Scholar",
+        "requirement_met": "100 astronomy atoms completed",
+        "expected_response_hint": "You've unlocked the Nebula Scholar DigitalSkin! This was earned by completing 100 astronomy LearningAtom concepts. Wear it with pride."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["earned", "DigitalSkin"],
+        "forbidden_keywords": ["badge", "achievement", "purchased", "buy"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.15,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.45,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 75
+    },
+    {
+      "id": "ea-013",
+      "input": {
+        "trigger": "certification_path_progress",
+        "path_name": "Data Science Fundamentals",
+        "completion_pct": 75,
+        "atoms_remaining": 20,
+        "expected_response_hint": "You're 75% through the Data Science Fundamentals certification path with 20 LearningAtom concepts remaining. You're in the home stretch!"
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["75%", "remaining"],
+        "forbidden_keywords": ["course", "lesson"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.25,
+        "vocabulary_compliance": 0.30,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 70
+    },
+    {
+      "id": "ea-014",
+      "input": {
+        "trigger": "time_of_day_optimal",
+        "best_performance_hour": 14,
+        "current_hour": 14,
+        "expected_response_hint": "Your data shows you perform best around 2 PM — and it's that time now! Perfect moment for some focused learning."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": true,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["perform", "best"],
+        "forbidden_keywords": [],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.30,
+        "factual_accuracy": 0.20,
+        "vocabulary_compliance": 0.20,
+        "safety_score": 0.30
+      },
+      "min_acceptable_score": 68
+    },
+    {
+      "id": "ea-015",
+      "input": {
+        "trigger": "evolution_tier_approaching",
+        "current_tier": 2,
+        "xp_to_next_tier": 150,
+        "expected_response_hint": "Your Familiar is close to evolving to tier 3! Just 150 more XP to go. Every LearningAtom you complete brings you closer."
+      },
+      "expected_output_characteristics": {
+        "should_contain_explanation": false,
+        "should_scaffold": false,
+        "difficulty_level": "beginner",
+        "required_keywords": ["evolving", "tier"],
+        "forbidden_keywords": ["level", "level up", "badge"],
+        "should_be_encouraging": true
+      },
+      "rubric_weights": {
+        "pedagogical_quality": 0.20,
+        "factual_accuracy": 0.15,
+        "vocabulary_compliance": 0.40,
+        "safety_score": 0.25
+      },
+      "min_acceptable_score": 72
+    }
+  ]
+}
