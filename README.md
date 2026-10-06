@@ -1,58 +1,42 @@
 # chora-ml-jobs
 
-Batch ML jobs for the Chora platform: drift detection, model evaluation, and
-billing aggregation. One Docker image serves all jobs — the job is selected at
-runtime via the `JOB` environment variable.
+## About
 
-The unit is cloud-neutral: PostgreSQL (Familiar DB) for persistence, NATS
-JetStream for alert events, MLflow for experiment tracking, and env-backed
-configuration. No cloud account or managed services (Cloud Pub/Sub, Cloud
-Storage, Cloud Run) are required.
+`chora-ml-jobs` is a Python package for Chora ML batch jobs. It provides jobs for embedding drift detection, model evaluation against golden datasets, and ML token-usage billing aggregation, with one container image selecting the job through the `JOB` environment variable. The jobs use PostgreSQL for Familiar data, MLflow for experiment tracking, and NATS JetStream for ML alert events.
 
-## Jobs
+## Quick start
 
-| Job | Description | Schedule (prod) |
-|-----|-------------|-----------------|
-| `drift_detector` | Detects embedding distribution drift in Familiar persona vectors | Daily |
-| `eval_runner` | Evaluates ML model quality against golden test datasets | Weekly / post-training |
-| `billing_aggregator` | Aggregates ML token usage per tenant for billing periods | End of billing period |
+Prerequisites:
 
-## Architecture
+- Python 3.13 or Docker
+- PostgreSQL for the Familiar database
+- NATS JetStream for alert publishing when running `drift_detector` or `eval_runner`
+- MLflow for experiment tracking
 
-- **Compute**: any host running the container image; one job per invocation.
-- **Database**: PostgreSQL (`chora_familiar`, pgvector extension). The jobs read
-  `familiar_memories`, `retraining_trigger_configs`, and
-  `model_registry_entries`, and write `drift_detection_results`. The schema is
-  owned by the Familiar service — no migrations ship with this repo.
-- **Event bus**: NATS JetStream. Drift and regression alerts are published to
-  the `chora.ml.alerts` subject (envelope as message headers, JSON body) for
-  chora-communication to consume.
-- **Experiment tracking**: MLflow at `MLFLOW_TRACKING_URI`.
-- **Ports**: none — batch jobs listen on no port.
-
-## Configuration
-
-All configuration is via environment variables:
-
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `JOB` | Yes | — | Job to run: `drift_detector`, `eval_runner`, `billing_aggregator` |
-| `DATABASE_URL` | Yes | — | PostgreSQL connection string (Familiar DB) |
-| `MLFLOW_TRACKING_URI` | No | `http://localhost:5000` | MLflow tracking server URL |
-| `MLFLOW_EXPERIMENT_NAME` | No | `chora-ml-jobs` | MLflow experiment name |
-| `CHORA_NATS_URL` | No | `nats://localhost:4222` | NATS broker URL for alert events |
-| `FIXTURES_DIR` | No | `/app/fixtures` (container) | Golden dataset directory for `eval_runner` |
-| `LOG_LEVEL` | No | `INFO` | Logging level |
-
-## Local Development
-
-### Run with Docker
+Install the development environment with uv:
 
 ```bash
-# Build the image
+uv sync --all-groups
+```
+
+Set the required database connection and, when needed, the NATS URL:
+
+```bash
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/chora_familiar
+export CHORA_NATS_URL=nats://localhost:4222
+```
+
+Run a job:
+
+```bash
+JOB=drift_detector python -m chora_ml_jobs.entrypoint
+```
+
+Or build and run the container:
+
+```bash
 docker build -t chora-ml-jobs .
 
-# Run a specific job
 docker run --rm \
   -e JOB=drift_detector \
   -e DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:5432/chora_familiar \
@@ -60,43 +44,74 @@ docker run --rm \
   chora-ml-jobs
 ```
 
-### Run Without Docker
+## Usage
 
-```bash
-# Install dev dependencies
-uv sync --all-groups
+The container entrypoint is:
+
+```text
+python -m chora_ml_jobs.entrypoint
 ```
 
-# Set environment variables
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/chora_familiar
-export CHORA_NATS_URL=nats://localhost:4222
+Select the job with `JOB`. Supported values are:
 
-# Run a job
-JOB=drift_detector python -m chora_ml_jobs.entrypoint
-```
+| Job | What it does |
+| --- | --- |
+| `drift_detector` | Compares recent and baseline Familiar persona embeddings, logs drift metrics to MLflow, stores results in `drift_detection_results`, and publishes a `chora.ml.drift_detected` alert when the configured cosine-drift threshold is exceeded. |
+| `eval_runner` | Loads JSON golden datasets from `FIXTURES_DIR`, evaluates production models from `model_registry_entries`, logs evaluation metrics to MLflow, and publishes `chora.ml.model_eval_regression` alerts for regressions greater than 5 points. |
+| `billing_aggregator` | Entry point for the billing aggregation job. The current implementation is a no-op stub. |
 
-### In the Chora compose stack
+`drift_detector` uses a 30-day baseline window and a 7-day evaluation window by default. Its default cosine-shift warning and critical thresholds are 0.15 and 0.25; database configuration in `retraining_trigger_configs` can override the warning threshold and evaluation window.
 
-The ML jobs container is included in the main docker-compose stack
-(`chora-stack`), which provides Postgres, NATS, and MLflow:
+Alerts from the drift and evaluation jobs are published to the NATS JetStream subject `chora.ml.alerts`. The event envelope is sent in message headers, with a JSON envelope in the message body.
 
-```bash
-docker compose up -d mlflow chora-ml-jobs
+Configuration is provided through environment variables:
 
-# Exec into the container to run a specific job
-docker compose exec chora-ml-jobs bash
-JOB=drift_detector python -m chora_ml_jobs.entrypoint
-```
+| Variable | Required | Default | Purpose |
+| --- | --- | --- | --- |
+| `JOB` | Yes | | Selects the batch job. |
+| `DATABASE_URL` | Yes | | PostgreSQL connection string for the Familiar database. |
+| `MLFLOW_TRACKING_URI` | No | `http://localhost:5000` | MLflow tracking server. |
+| `MLFLOW_EXPERIMENT_NAME` | No | `chora-ml-jobs` | Base MLflow experiment name. |
+| `CHORA_NATS_URL` | No | `nats://localhost:4222` | NATS broker used for alert events. |
+| `FIXTURES_DIR` | No | `fixtures` in a source checkout, `/app/fixtures` in the container | Golden dataset directory used by `eval_runner`. |
+| `LOG_LEVEL` | No | `INFO` | Logging level. |
+
+The jobs are batch processes and do not listen on HTTP ports.
 
 ## Development
 
+The project uses a `src` layout:
+
+```text
+src/chora_ml_jobs/
+  alerting.py
+  billing_aggregator.py
+  config.py
+  drift_detector.py
+  entrypoint.py
+  eval_runner.py
+fixtures/
+  *.json
+```
+
+Install development dependencies:
+
 ```bash
-uv sync --all-groups   # or: pip install -e ".[dev]"
+uv sync --all-groups
+```
+
+Run the available checks:
+
+```bash
 ruff check src
 ruff format --check src
 mypy src
 ```
 
-## License
+Run the test suite with:
 
-UNLICENSED — Chora Platform.
+```bash
+pytest
+```
+
+The Dockerfile builds a Python 3.13 image, includes the source tree and fixture files, and runs as a non-root user. The package uses Hatchling for builds and pins resolved dependencies in `uv.lock`.
